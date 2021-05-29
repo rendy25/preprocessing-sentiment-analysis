@@ -3,18 +3,20 @@
 
 # In[18]:
 
-
-
-#========CLEANING CODE BY SARIKHIN=========# 
+#========CLEANING CODE=========# 
 """
 Note :
-- wajib memakai python 2.7
 - sudah terinstal lib sebagai berikut :
 - pandas
 - seaborn
 - sklearn
-- nltk(corpus, tokenize)
+- nltk
 - pysastrawi
+- jika belum silahkan install terlebih dahulu
+- tambahan :
+- pip install xlrd
+- pip install openpyxl
+- pip install Sastrawi
 """
 
 # Import libraries
@@ -31,7 +33,7 @@ import re
 
 # Load dataset
 def load_data():
-    data = pd.read_excel('novel.xls')#ubah nama file sesai dengan nama file kalian
+    data = pd.read_excel('data_sebelum_cleaning.xls')#ubah nama file sesai dengan nama file kalian
     return data
 
 tweet_df = load_data()
@@ -144,6 +146,6 @@ df['Tweet'] = df['tweet_clean'].apply(lambda x: remove_punct(x))
 df.sort_values("Tweet", inplace = True)
 df.drop(df.columns[[0,1,2,3,4]], axis = 1, inplace = True)
 df.drop_duplicates(subset ="Tweet", keep = 'first', inplace = True)
-df.to_csv('output.csv',encoding='utf8', index=False)
+df.to_csv('output_data.csv',encoding='utf8', index=False)
 df
 
